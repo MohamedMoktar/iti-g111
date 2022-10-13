@@ -9,7 +9,7 @@ pipeline{
         }
         stage("Build"){
             steps{
-                powershell 'mvn clean package'
+                 sh 'mvn -B -DskipTests clean package'
             }
         }
         // stage('Test') {
@@ -26,7 +26,7 @@ pipeline{
         
         stage("Build Docker Image"){
             steps{
-                powershell ''' 
+                sh ''' 
                 docker build -t BMI-pipeline 
                 docker push mohmedmokhtar/task_4
                 '''
